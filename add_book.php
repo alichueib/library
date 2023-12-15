@@ -78,18 +78,21 @@
 <body>
     <h1>Add a Book:</h1>
 
-    <form action="add_book_handler.php" method="POST">
+    <form action="add_book_handler.php" method="POST" enctype="multipart/form-data">
         <label for="ti">Title:</label>
-        <input type="text" id='ti' name="title" placeholder="Enter Book's Title"><br>
+        <input type="text" id='ti' name="title" placeholder="Enter Book's Title">
 
         <label for="pn">Pages Nbr:</label>
-        <input type="text" id='pn' name="pages_number" placeholder="Enter Book's Pages Nbr"><br>
+        <input type="text" id='pn' name="pages_number" placeholder="Enter Book's Pages Nbr">
 
         <label for="qtt">Available Quantity:</label>
-        <input type="text" id='qtt' name="quantity" placeholder="Enter Book's Quantity"><br>
+        <input type="text" id='qtt' name="quantity" placeholder="Enter Book's Quantity">
 
         <label for="pr">Price:</label>
-        <input type="text" id='pr' name="price" placeholder="Enter Book's Price"><br>
+        <input type="text" id='pr' name="price" placeholder="Enter Book's Price">
+
+        <label for="pic">Book's Cover Photo:</label>
+        <input type="file" id="pic" name="picture"><br>
 
         <input type="submit" value="Upload">
     </form>

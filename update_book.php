@@ -114,7 +114,7 @@ if (!isset($_SESSION['username'])) {
 <body>
     <h1>Your Editing <?php echo $selected_book; ?></h1>
     <h2>Update Book Details</h2>
-    <form action="update_book_handler.php" method="POST">
+    <form action="update_book_handler.php" method="POST" enctype="multipart/form-data">
         <label for="ti">Title:</label>
         <input type="text" id='ti' name="title" value="<?php if(isset($result['title'])){echo $result['title']; }else{ echo "";}?>" placeholder="Enter Book's Title">
 
@@ -126,7 +126,10 @@ if (!isset($_SESSION['username'])) {
 
         <label for="pr">Price:</label>
         <input type="text" id='pr' name="price" value="<?php if(isset($result['price'])){echo $result['price']; }else{ echo "";} ?>" placeholder="Enter Book's Price">
-
+        
+        <label for="pic">Book's Cover Photo:</label>
+        <input type="file" id="pic" name="picture"><br>
+        
         <input type="submit" value="Save">
     </form>
 
@@ -139,3 +142,4 @@ if (!isset($_SESSION['username'])) {
 </body>
 
 </html>
+

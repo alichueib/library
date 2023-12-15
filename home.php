@@ -100,6 +100,7 @@
                 <input type="hidden" name="book_name" value="<?php echo $row['title']; ?>">
                 <input type="submit" value="Buy Now">
             </form>
+            <img src="images/<?php echo $row['img_name']; ?>" alt="Image" height="150" width="100">
         </div>
     <?php
             }

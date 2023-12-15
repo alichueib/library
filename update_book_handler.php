@@ -11,15 +11,30 @@
         $_SESSION['quantity']=$quantity;
         $_SESSION['price']=$price;
 
-        echo "Before";
+        if (isset($_FILES['picture'])) {
+            $picture = $_FILES['picture'];
+        } else {
+            echo "No file uploaded.";
+        }
+
+        //echo "Before";
         $book=$_SESSION['selected'];
-        echo $book;
+        //echo $book;
 
         try{
             require_once 'connect.php';
+            require_once 'fcts/uploadPicture.php';
+            $newPicName=uploadPicture($picture);// calling Fct
             
+            //If error has happend:
+            if( $newPicName== -1){
+                echo "Error happened during Picture Upload";
+                header('refresh:3;url=add_book.php');
+                die();
+            }
+
             $query="UPDATE books
-                    SET title=:title,number_of_pages=:number,quantity=:quantity,price=:price
+                    SET title=:title,number_of_pages=:number,quantity=:quantity,price=:price,img_name=:img
                     WHERE title=:selected";
     
             $stmt=$pdo->prepare($query);
@@ -29,6 +44,7 @@
             $stmt->bindParam(":quantity",$quantity);
             $stmt->bindParam(":price",$price);
             $stmt->bindParam(":selected",$book);
+            $stmt->bindParam(":img",$newPicName);
     
             $stmt->execute();
 
